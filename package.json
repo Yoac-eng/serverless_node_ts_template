@@ -21,5 +21,11 @@
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.40.0"
+  },
+  "dependencies": {
+    "@middy/core": "^6.4.3",
+    "@middy/http-json-body-parser": "^6.4.3",
+    "@middy/http-multipart-body-parser": "^6.4.3",
+    "@middy/http-response-serializer": "^6.4.3"
   }
 }

@@ -24,4 +24,10 @@ functions:
     events:
       - httpApi:
           path: /
-          method: GET
+          method: POST
+  upload:
+    handler: src/upload.handler
+    events:
+      - httpApi:
+          path: /upload
+          method: POST
