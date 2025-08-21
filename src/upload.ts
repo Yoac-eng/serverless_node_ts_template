@@ -1,18 +1,32 @@
-import { makeHandler } from "./middy/makeLambdaHandler";
+import { randomUUID } from "node:crypto";
 
-interface IHelloRequestBody {
-  firstName: string;
-  lastName: string;
-  file: any;
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+
+import { s3Client } from "./clients/s3Client";
+import { makeHandler } from "./middy/makeLambdaHandler";
+import { IFile } from "./types/IFile";
+
+interface IUploadRequestBody {
+  file: IFile;
 }
 
-export const handler = makeHandler<IHelloRequestBody>(async (request) => {
+export const handler = makeHandler<IUploadRequestBody>(async (request) => {
+  const { file } = request.body;
+
+  const newFileName = `${randomUUID()}-${file.filename}`;
+
+  const putObjectCommand = new PutObjectCommand({
+    Bucket: "awslambdatestbucketxd",
+    Key: newFileName,
+  });
+
+  await s3Client.send(putObjectCommand);
+
   return {
     statusCode: 200,
     body: {
-      firstName: request.body.firstName,
-      lastName: request.body.lastName,
-      file: request.body.file,
+      message: "File added successfully",
+      file: newFileName,
     },
   };
 });

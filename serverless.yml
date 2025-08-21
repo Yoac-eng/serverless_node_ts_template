@@ -6,6 +6,12 @@ provider:
   runtime: nodejs20.x
   architecture: arm64
   region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: s3:PutObject
+          Resource: arn:aws:s3:::awslambdatestbucketxd/*
 
 package:
   individually: true

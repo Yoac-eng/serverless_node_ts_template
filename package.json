@@ -23,6 +23,7 @@
     "typescript-eslint": "^8.40.0"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.872.0",
     "@middy/core": "^6.4.3",
     "@middy/http-json-body-parser": "^6.4.3",
     "@middy/http-multipart-body-parser": "^6.4.3",
