@@ -6,6 +6,8 @@ import { APIGatewayProxyEvent } from "aws-lambda";
 
 import { IHttpRequest, IHttpResponse } from "../types/IHttp";
 
+import { errorHandler } from "./middlewares/errorHandler";
+
 type Handler<Tbody extends Record<string, any> | undefined> = (
   request: IHttpRequest<Tbody>,
 ) => Promise<IHttpResponse>;
@@ -16,6 +18,7 @@ export function makeHandler<
   const m = middy<APIGatewayProxyEvent, IHttpResponse>()
     .use(httpJsonBodyParser({ disableContentTypeError: true }))
     .use(httpMultipartBodyParser({ disableContentTypeError: true }))
+    .use(errorHandler())
     .use(
       httpResponseSerializer({
         defaultContentType: "application/json",
