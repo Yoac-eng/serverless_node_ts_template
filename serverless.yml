@@ -37,3 +37,12 @@ functions:
       - httpApi:
           path: /upload
           method: POST
+  users:
+    handler: src/users.handler
+    events:
+      - httpApi:
+          path: /users
+          method: ANY
+      - httpApi:
+          path: /users/{param+}
+          method: ANY

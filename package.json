@@ -27,6 +27,8 @@
     "@middy/core": "^6.4.3",
     "@middy/http-json-body-parser": "^6.4.3",
     "@middy/http-multipart-body-parser": "^6.4.3",
-    "@middy/http-response-serializer": "^6.4.3"
+    "@middy/http-response-serializer": "^6.4.3",
+    "@middy/http-router": "^6.4.3",
+    "zod": "^4.0.17"
   }
 }

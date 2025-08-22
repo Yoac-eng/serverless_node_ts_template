@@ -8,20 +8,21 @@ export function errorHandler(): MiddlewareObj<APIGatewayProxyEventV2> {
   return {
     onError: (request) => {
       const { error } = request;
+      console.log(error);
 
-      if (error instanceof HttpError) {
+      if (error && (error instanceof HttpError || "statusCode" in error)) {
         request.response = {
           ...request.response,
           statusCode: error.statusCode,
-          body: error.message,
+          body: JSON.stringify({
+            message: error.message,
+          }),
           headers: {
             ...request.response?.headers,
             "Content-Type": "application/json",
           },
         };
       } else {
-        console.log(error);
-
         request.response = {
           ...request.response,
           statusCode: 500,

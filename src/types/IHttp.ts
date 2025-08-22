@@ -1,6 +1,7 @@
 export interface IHttpRequest<Tbody extends Record<string, any> | undefined> {
   body?: Tbody;
   headers?: Record<string, string>;
+  pathParameters?: Record<string, string>;
 }
 
 export interface IHttpResponse {

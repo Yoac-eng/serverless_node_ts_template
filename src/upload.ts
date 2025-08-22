@@ -15,7 +15,7 @@ export const handler = makeHandler<IUploadRequestBody>(async (request) => {
   const { file } = request.body;
 
   if (!file) {
-    throw new HttpError(400, { error: "A file is required" });
+    throw new HttpError(400, "A file is required");
   }
 
   const newFileName = `${randomUUID()}-${file.filename}`;
