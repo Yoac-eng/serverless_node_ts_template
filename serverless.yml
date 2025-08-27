@@ -25,12 +25,6 @@ build:
       - "@aws-sdk/*"
 
 functions:
-  hello:
-    handler: src/hello.handler
-    events:
-      - httpApi:
-          path: /
-          method: POST
   upload:
     handler: src/upload.handler
     events:

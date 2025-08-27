@@ -2,7 +2,7 @@ import { MiddlewareObj } from "@middy/core";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 import { z } from "zod";
 
-import { HttpError } from "../../errors/HttpError";
+import { HttpError } from "../../../application/errors/HttpError";
 
 // this middleware will get any uncaught exception inside the code
 export function errorHandler(): MiddlewareObj<APIGatewayProxyEventV2> {

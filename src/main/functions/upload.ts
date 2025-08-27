@@ -2,10 +2,10 @@ import { randomUUID } from "node:crypto";
 
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 
-import { s3Client } from "./clients/s3Client";
-import { HttpError } from "./errors/HttpError";
-import { makeHandler } from "./middy/makeLambdaHandler";
-import { IFile } from "./types/IFile";
+import { s3Client } from "../../application/clients/s3Client";
+import { HttpError } from "../../application/errors/HttpError";
+import { IFile } from "../../application/types/IFile";
+import { makeHandler } from "../middy/makeLambdaHandler";
 
 interface IUploadRequestBody {
   file: IFile;

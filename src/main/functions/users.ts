@@ -1,5 +1,5 @@
-import { makeHandler } from "./middy/makeLambdaHandler";
-import { makeRoutesHandler } from "./middy/makeRoutesHandler";
+import { makeHandler } from "../middy/makeLambdaHandler";
+import { makeRoutesHandler } from "../middy/makeRoutesHandler";
 
 export const listUsersHandler = makeHandler(async (request) => {
   return {

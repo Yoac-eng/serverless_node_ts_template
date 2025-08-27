@@ -5,7 +5,7 @@ import httpResponseSerializer from "@middy/http-response-serializer";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 import { z } from "zod";
 
-import { IHttpRequest, IHttpResponse } from "../types/IHttp";
+import { IHttpRequest, IHttpResponse } from "../../application/types/IHttp";
 
 import { errorHandler } from "./middlewares/errorHandler";
 import { schemaHandler } from "./middlewares/schemaHandler";
