@@ -1,9 +1,8 @@
 import { IController } from "../types/IController";
-import { IHttpRequest, IHttpResponse } from "../types/IHttp";
+import { IHttpResponse } from "../types/IHttp";
 
 export class ListUsersController implements IController {
-  async handler({ params }: IHttpRequest<undefined>): Promise<IHttpResponse> {
-    console.log("params " + params);
+  async handler(): Promise<IHttpResponse> {
     return {
       statusCode: 200,
       body: {

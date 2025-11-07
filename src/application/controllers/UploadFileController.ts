@@ -5,29 +5,20 @@ import { z } from "zod";
 
 import { s3Client } from "../clients/s3Client";
 import { HttpError } from "../errors/HttpError";
+import { UploadFileSchema } from "../schemas/UploadFileSchema";
 import { IController } from "../types/IController";
 import { IHttpRequest } from "../types/IHttp";
-
-const UploadFileSchema = z.object({
-  file: z.object({
-    filename: z.string().min(1, "Filename is required"),
-    mimetype: z.string().min(1, "mimetype is required"),
-    content: z.string().min(1, "content is required"),
-  }),
-});
 
 type TUploadFileRequestBody = z.Infer<typeof UploadFileSchema>;
 
 export class UploadFileController
   implements IController<TUploadFileRequestBody>
 {
-  static readonly TBodySchema = UploadFileSchema;
-
   async handler(request: IHttpRequest<TUploadFileRequestBody>) {
     const { file } = request.body;
 
     if (!file) {
-      throw new HttpError(400, "A file is required");
+      throw new HttpError(400, { error: "A file is required" });
     }
 
     const newFileName = `${randomUUID()}-${file.filename}`;

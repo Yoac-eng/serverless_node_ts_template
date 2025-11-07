@@ -7,13 +7,10 @@ export function schemaHandler<T extends z.ZodObject>(
 ): MiddlewareObj<APIGatewayProxyEventV2> {
   return {
     before: (request) => {
+      console.log("bodySchema in middleware " + JSON.stringify(bodySchema));
       const { body } = request.event;
 
-      if (!bodySchema) {
-        return request;
-      }
-
-      bodySchema.parse(body);
+      if (bodySchema && body) bodySchema.parse(body);
     },
   };
 }

@@ -1,7 +1,11 @@
-export interface IHttpRequest<TBody extends Record<string, any> | undefined> {
+export interface IHttpRequest<
+  TBody extends Record<string, any> | undefined = undefined,
+  THeaders extends Record<string, string> = Record<string, string>,
+  TParams extends Record<string, string> = Record<string, string>,
+> {
   body?: TBody;
-  headers?: Record<string, string>;
-  params?: Record<string, string>;
+  headers?: THeaders;
+  params?: TParams;
 }
 
 export interface IHttpResponse {
